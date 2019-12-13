@@ -1,24 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const getArtists = () => {
+fetch(`http://localhost:3000/api/v1/artists`)
+.then(resp => resp.json())
+.then(parsedResp => console.log(parsedResp))
+  }
+
+const getArtworks = () => {
+  fetch(`http://localhost:3000/api/v1/artworks`)
+    .then(resp => resp.json())
+    .then(parsedResp => console.log(parsedResp))
+  }
+      
+const getMuseums = () => {
+  fetch(`http://localhost:3000/api/v1/artists`)
+    .then(resp => resp.json())
+    .then(parsedResp => console.log(parsedResp))
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="derp">
+        here it is folks. the app. sheeit.
+        {getArtists()}
+        {getMuseums()}
+        {getArtworks()}
     </div>
   );
 }
