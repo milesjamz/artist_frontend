@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import MakeArtist from './MakeArtist'
 
 class App extends React.Component {
 
@@ -30,6 +31,7 @@ render() {
   return (
     <div className="derp">
         here it is folks. the app. sheeit.
+        <MakeArtist />
     </div>
   );
 }
