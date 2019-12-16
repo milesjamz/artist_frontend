@@ -1,11 +1,12 @@
 import React from 'react';
 
-class MakeArtist extends React.Component {
+class MakeArtwork extends React.Component {
 
 state = {
     name: '',
-    bio: '',
-    location: '',
+    description: '',
+    material: '',
+    date: '',
     image: ''
 }
 
@@ -18,36 +19,36 @@ handleChange = (e) => {
 
 handleOnSubmit = e => {
     e.preventDefault()
-    console.log('yeahhhh')
-    const newArtist = {
-        based_in: this.state.location,
+    const newArtwork = {
+        coords: this.state.coords,
         name: this.state.name,
         image:this.state.image,
-        bio: this.state.bio
+        description: this.state.description,
+        city: this.state.city
     }
-    fetch('http://localhost:3000/api/v1/artists', {
+    fetch('http://localhost:3000/api/v1/artworks', {
         method:'POST',
         headers:{
             "Content-Type": "application/json",
             Accept: "application/json"
         },
-        body: JSON.stringify({artist: newArtist})
+        body: JSON.stringify({artwork: newArtwork, artist_id:1, museum_id: 1})
     }).then(res => res.json())
-.then(returnedArtist => {
-        console.log(returnedArtist)
+.then(returnedArtwork => {
+        console.log(returnedArtwork)
     })
-console.log(newArtist)
+console.log(newArtwork)
     this.clearForm()
 }
 
 clearForm = () => {
-    this.setState({name: '',bio: '',location: '', image: ''})
+    this.setState({name: '',description: '',city: '', coords: '', image: ''})
 }
 
 render() {
     return (
-    <div className='artistForm'>
-        this form makes a new artist<br/>
+    <div className='artworkForm'>
+        this form makes a new artwork<br/>
         <form onSubmit={this.handleOnSubmit}>
             <label>
                 Name:
@@ -58,18 +59,26 @@ render() {
                        />
             </label><br/>
             <label>
-                Biography:
+                description:
                 <input type='text'
-                       name='bio'
-                       value={this.state.bio}
+                       name='description'
+                       value={this.state.description}
                        onChange={this.handleChange}
                        />
             </label><br/>
             <label>
-                Based In:
+                Material:
                 <input type='text'
-                       name='location'
-                       value={this.state.location}
+                       name='material'
+                       value={this.state.material}
+                       onChange={this.handleChange}
+                       />
+            </label><br/>
+            <label>
+                Date:
+                <input type='text'
+                       name='date'
+                       value={this.state.date}
                        onChange={this.handleChange}
                        />
             </label><br/>
@@ -85,9 +94,7 @@ render() {
         </form>
     </div>
     )
+    }
 }
 
-
-}
-
-export default MakeArtist
+export default MakeArtwork

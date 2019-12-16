@@ -20,10 +20,11 @@ handleChange = (e) => {
 handleOnSubmit = e => {
     e.preventDefault()
     const newMuseum = {
-        based_in: this.state.coords,
+        coords: this.state.coords,
         name: this.state.name,
         image:this.state.image,
-        description: this.state.description
+        description: this.state.description,
+        city: this.state.city
     }
     fetch('http://localhost:3000/api/v1/museums', {
         method:'POST',
@@ -47,7 +48,7 @@ clearForm = () => {
 render() {
     return (
     <div className='museumForm'>
-        hello there, old chap<br/>
+        this form makes a new museum<br/>
         <form onSubmit={this.handleOnSubmit}>
             <label>
                 Name:

@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import MakeArtist from './MakeArtist';
 import MakeMuseum from './MakeMuseum.js';
+import MakeArtwork from './MakeArtwork';
 
 class App extends React.Component {
 
@@ -34,6 +35,7 @@ render() {
         here it is folks. the app. sheeit.
         <MakeArtist />
         <MakeMuseum />
+        <MakeArtwork />
     </div>
   );
 }
